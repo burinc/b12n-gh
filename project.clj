@@ -6,7 +6,7 @@
   :profiles {:dev {:dependencies [[lein-binplus "0.6.6"]]}
              :uberjar {:aot :all}}
   :source-paths ["src"]
-  :bin {:name "gh-utils"
+  :bin {:name "b12n-gh"
         :bin-path "~/bin"
         :bootclasspath false}
   :plugins [[lein-binplus "0.6.6"]
@@ -20,12 +20,12 @@
                  [clj-jgit "1.0.1"]
                  [aero "1.1.6"]]
   :repositories [["jitpack" "https://jitpack.io"]]
-  :deploy-repositories [["clojars"  {:sign-releases true
-                                     :creds :gpg
-                                     :signing {:gpg-key "BB24A1BE3FCE8822"}
+  :deploy-repositories [["clojars"  {:sign-releases false
+                                     ;;:creds :gpg
+                                     ;;:signing {:gpg-key "BB24A1BE3FCE8822"}
                                      :url "https://clojars.org/repo"}]
-                        ["snapshots" {:sign-releases true
-                                      :creds :gpg
-                                      :signing {:gpg-key "BB24A1BE3FCE8822"}
+                        ["snapshots" {:sign-releases false
+                                      ;;:creds :gpg
+                                      ;;:signing {:gpg-key "BB24A1BE3FCE8822"}
                                       :url "https://clojars.org/repo"}]]
   :main net.b12n.github.utils.core)
