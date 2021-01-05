@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+lein cljfmt check `find ./src -type f -iname "*.clj"`
