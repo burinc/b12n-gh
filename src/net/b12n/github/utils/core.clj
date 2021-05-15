@@ -54,13 +54,21 @@
       fs/expand-home
       fs/normalized))
 
+;; https://docs.github.com/en/rest/reference/repos
+;; https://docs.github.com/en/rest/reference/repos#create-a-repository-for-the-authenticated-user
 (defn- default-options
   "Define the sensible default options when creating new Github repository"
   [options]
   (merge {:public false
-          :has-issue false
+          :has-issues false
           :has-wiki false
-          :has-download false}
+          :has-download false
+          :delte-branch-on-merge true
+          ;; :has-downloads true
+          ;;:visibility "private" ;; or "public"
+          ;;:archived false
+          ;;:disabled false
+          }
          options))
 
 (defn- check-and-confirm-response
