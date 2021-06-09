@@ -1,13 +1,13 @@
 (ns net.b12n.github.utils.core
   (:gen-class)
   (:require [aero.core :refer [read-config]]
+            [clj-jgit.porcelain :as cjp]
+            [clojure.java.shell :as shell]
             [clojure.string :as str]
             [clojure.tools.cli :as cli]
-            [net.b12n.github.utils.option :as opt]
             [me.raynes.fs :as fs]
-            [tentacles.repos :as repos]
-            [clj-jgit.porcelain :as cjp]
-            [clojure.java.shell :as shell]))
+            [net.b12n.github.utils.option :as opt]
+            [tentacles.repos :as repos]))
 
 (defn git-init-commit
   "Run initial git commit on a given directory."
