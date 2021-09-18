@@ -17,7 +17,13 @@ TL;DR; `b12n-gh --config ~/Dropbox/config/github.edn --repo my-awesome-idea --pu
 - [Leiningen](http://leiningen.org/#install)
 
 #### Installation
+##### Deps
 
+```sh
+clojure -X:uberjar :jar b12n-gh.jar && clojure -X:bin
+```
+
+##### Leinigen
 ```sh
 # Clone this repository locally
 mkdir -p ~/projects
@@ -63,7 +69,7 @@ b) To create and push brand new project to Github and run initial commit
 b12n-gh -c ~/Dropbox/config/github.edn -r awesome-idea -i -l upstream -p
 
 c) To create brand new project to Github, run initial commit and skip pushing to remote branch.
-b12n-gh -c ~/Dropbox/config/github.edn -r awesome-idea -i -l origin 
+b12n-gh -c ~/Dropbox/config/github.edn -r awesome-idea -i -l origin
 ```
 
 #### Usage

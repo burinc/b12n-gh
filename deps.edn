@@ -1,0 +1,82 @@
+{:paths
+ ["src" "test" "resources"]
+
+ :deps
+ {aero/aero {:mvn/version "1.1.6"}
+  clj-commons/fs {:mvn/version "1.6.307"}
+  clj-jgit/clj-jgit {:mvn/version "1.0.1"}
+  irresponsible/tentacles {:mvn/version "0.6.8"}
+  org.clojure/tools.cli {:mvn/version "1.0.206"}
+  org.slf4j/slf4j-nop {:mvn/version "2.0.0-alpha5"}}
+
+ :deploy
+ {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+  :exec-fn deps-deploy.deps-deploy/deploy
+  :exec-args {:installer :remote
+              :sign-releases? true
+              :artifact "deps-deploy.jar"}}
+
+ :install {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+           :exec-args {:installer :local
+                        :artifact "deps-deploy.jar"}}
+
+ :aliases
+ {:main
+  {:main-opts ["-m" "net.b12n.github.utils.core"]}
+
+  :bin {:replace-deps {com.github.ericdallo/deps-bin {:mvn/version "0.1.1"}}
+        :exec-fn deps-bin.deps-bin/bin
+        :exec-args {:jar "b12n-gh.jar"
+                    :name "b12n-gh"}}
+
+  :nrepl
+  {:extra-deps
+   {cider/cider-nrepl {:mvn/version "0.26.0"}
+    nrepl/nrepl {:mvn/version "0.8.3"}}}
+
+  :test
+  {:extra-paths ["test"]
+   :extra-deps
+   {lambdaisland/kaocha {:mvn/version "1.0.887"}
+    lambdaisland/kaocha-junit-xml {:mvn/version "0.0.76"}
+    org.clojure/test.check {:mvn/version "1.1.0"}
+    tortue/spy {:mvn/version "2.9.0"}}}
+
+  ;; build an uberjar (application) with AOT compilation by default:
+  :uberjar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
+            :exec-fn hf.depstar/uberjar
+            :exec-args {:aot true
+                        :main-class "net.b12n.github.utils.core"}}
+
+  ;; build a jar (library):
+  :jar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
+        :exec-fn hf.depstar/jar
+        :exec-args {"-m" "net.b12n.github.utils.core"}}
+
+  :cljfmt
+  {:main-opts ["-m" "cljfmt.main"
+               "--file-pattern" "\\.clj[csx]?$|\\.edn$"
+               "--insert-missing-whitespace"
+               "--remove-consecutive-blank-lines"
+               "--remove-multiple-non-indenting-spaces"
+               "--remove-surrounding-whitespace"
+               "--remove-trailing-whitespace"]
+   :replace-deps
+   {cljfmt/cljfmt {:mvn/version "0.8.0"}}}
+
+  :nsorg-cli
+  {:replace-deps
+   {nsorg-cli/nsorg-cli {:mvn/version "0.3.1"}}
+   :main-opts ["-m" "nsorg.cli"]}
+
+  :clj-check
+  {:extra-deps
+   {athos/clj-check {:git/url "https://github.com/athos/clj-check.git"
+                     :sha "518d5a1cbfcd7c952f548e6dbfcb9a4a5faf9062"}}
+   :main-opts ["-m" "clj-check.check" "src" "test" "dev"]}
+
+  :antq
+  {:replace-deps
+   {com.github.liquidz/antq {:mvn/version "1.0.2"}
+    org.slf4j/slf4j-nop {:mvn/version "2.0.0-alpha5"}}
+   :main-opts ["-m" "antq.core"]}}}

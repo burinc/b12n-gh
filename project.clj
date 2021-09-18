@@ -24,7 +24,7 @@
   [[lein-ancient "0.7.0"]
    [lein-auto "0.1.3"]
    [lein-binplus "0.6.6"]
-   [lein-cljfmt "0.7.0"]
+   [lein-cljfmt "0.8.0"]
    [lein-nsorg "0.3.0"]
    [lein-ancient "0.7.0"]]
 
@@ -52,10 +52,10 @@
   [["jitpack" "https://jitpack.io"]]
 
   :deploy-repositories
-  [["clojars"  {:sign-releases false
+  [["clojars" {:sign-releases false
                 ;;:creds :gpg
                 ;;:signing {:gpg-key "BB24A1BE3FCE8822"}
-                :url "https://clojars.org/repo"}]
+               :url "https://clojars.org/repo"}]
    ["snapshots" {:sign-releases false
                  ;;:creds :gpg
                  ;;:signing {:gpg-key "BB24A1BE3FCE8822"}
