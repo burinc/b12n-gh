@@ -13,3 +13,5 @@ pom.xml.asc
 /Tips.org
 ## Extra
 cache/
+.cpcache/
+.lsp
